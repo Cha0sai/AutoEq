@@ -3,9 +3,13 @@ import os
 
 app = Flask(__name__)
 
+@app.route("/", methods=['GET'])
+def home():
+    return "Line Bot is Running"
+
 @app.route("/callback", methods=['POST'])
 def callback():
-    return 'OK', 200  # 關鍵在這邊！
+    return 'OK'
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
