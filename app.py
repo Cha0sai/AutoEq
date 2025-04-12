@@ -1,19 +1,12 @@
-from flask import Flask, request, abort
+from flask import Flask, request
+import os
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET"])
-def home():
-    return "LINE BOT is running."
-
-@app.route("/callback", methods=["POST"])
+@app.route("/callback", methods=['POST'])
 def callback():
-    # 接收 LINE 的資料
-    body = request.get_data(as_text=True)
-    print("Request body:", body)
-
-    # 確保 LINE 測試 webhook 有回傳 200
-    return 'OK', 200
+    return 'OK'
 
 if __name__ == "__main__":
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host="0.0.0.0", port=port)
