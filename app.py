@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    return 'OK'
+    return 'OK', 200  # 關鍵在這邊！
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
