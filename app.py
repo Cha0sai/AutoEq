@@ -1,6 +1,5 @@
-from flask import Flask, request, abort
+from flask import Flask, request
 import os
-import json
 
 app = Flask(__name__)
 
@@ -10,14 +9,7 @@ def home():
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    # 確認是來自 LINE
-    signature = request.headers.get('X-Line-Signature')
-    body = request.get_data(as_text=True)
-    
-    print(f"Header: {signature}")
-    print(f"Body: {body}")
-    
-    # 簡易回應
+    print("有人打 webhook 了")
     return 'OK', 200
 
 if __name__ == "__main__":
